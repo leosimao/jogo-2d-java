@@ -13,7 +13,7 @@ public class Principal extends JFrame {
         Fase fase = new Fase();
         super.add(fase);
         super.setTitle("Jogo Java 2D - POO");
-        super.setSize(1024, 728);
+        super.setSize(1920, 1080);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setLocationRelativeTo(null);
         super.setResizable(false);

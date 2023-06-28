@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class Fase extends JPanel implements ActionListener, KeyListener {
     private Image fundo;
@@ -31,6 +32,8 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         Graphics2D graficos = (Graphics2D)  g;
         graficos.drawImage(fundo, 0, 0, null);
         graficos.drawImage(nave.getPersonagem(), nave.getPosicaoEmX(), nave.getPosicaoEmY(), this);
+        ArrayList<Tiro> tiros = nave.getTiros();
+
         g.dispose();
     }
 
@@ -47,7 +50,10 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        nave.mover(e);
+        if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+            nave.atirar();
+        else
+            nave.mover(e);
     }
     @Override
     public void keyReleased(KeyEvent e) {
