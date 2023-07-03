@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class Fase extends JPanel implements ActionListener, KeyListener {
     private Image fundo;
     private Personagem nave;
+    private ArrayList<Inimigo> inimigo;
     private Timer timer;
 
     public static final int DELAY = 5;
+    public static final int QTD_INIMIGOS = 40;
     
     public Fase(){
         setFocusable(true);
@@ -59,5 +61,16 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         nave.parar(e);
+    }
+
+    public void incializandoInimigo(){
+        inimigo = new ArrayList<Inimigo>();
+        for(int i = 0; i < QTD_INIMIGOS; i++){
+            int x = (int) (Math.random() * 8000 + 1024);
+            int y = (int) (Math.random() * 650 + 30);
+            Inimigo inimigo = new Inimigo(x, y);
+            inimigo.add(inimigo);
+        }
+
     }
 }
