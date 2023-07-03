@@ -14,6 +14,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
 
     public static final int DELAY = 5;
+    
     public Fase(){
         setFocusable(true);
         setDoubleBuffered(true);
@@ -31,7 +32,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     public void paint(Graphics g){
         Graphics2D graficos = (Graphics2D)  g;
         graficos.drawImage(fundo, 0, 0, null);
-        graficos.drawImage(nave.getPersonagem(), nave.getPosicaoEmX(), nave.getPosicaoEmY(), this);
+        graficos.drawImage(nave.getImagem(), nave.getPosicaoEmX(), nave.getPosicaoEmY(), this);
         ArrayList<Tiro> tiros = nave.getTiros();
 
         g.dispose();

@@ -9,6 +9,7 @@ public class Principal extends JFrame {
     public static void main(String[] args) {
         new Principal();
     }
+    
     public Principal() {
         Fase fase = new Fase();
         super.add(fase);
