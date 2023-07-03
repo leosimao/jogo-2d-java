@@ -21,4 +21,7 @@ public class Inimigo extends Grafico {
     public void atualizar(){
         super.setPosicaoEmX(getPosicaoEmX() - VELOCIDADE_INIMIGO);
     }
+
+    public void add(Inimigo inimigo) {
+    }
 }
