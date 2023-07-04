@@ -4,17 +4,14 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Grafico {
+public abstract class Grafico {
     private int posicaoEmX;
     private int posicaoEmY;
     private int alturaImagem;
     private int larguraImagem;
     private Image imagem;
 
-    public void carregar(){
-        ImageIcon imagem = new ImageIcon("");
-        this.imagem = imagem.getImage();
-    }
+    public abstract void carregar();
 
     public int getPosicaoEmX() {
         return posicaoEmX;

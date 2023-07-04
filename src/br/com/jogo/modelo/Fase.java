@@ -26,23 +26,50 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
         nave = new Personagem();
         nave.carregar();
 
+        this.incializandoInimigo();
+
         addKeyListener(this);
 
         timer = new Timer(DELAY, this);
         timer.start();
     }
+
     public void paint(Graphics g){
         Graphics2D graficos = (Graphics2D)  g;
         graficos.drawImage(fundo, 0, 0, null);
         graficos.drawImage(nave.getImagem(), nave.getPosicaoEmX(), nave.getPosicaoEmY(), this);
         ArrayList<Tiro> tiros = nave.getTiros();
+        for (Tiro tiro : tiros) {
+            graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
+        }
 
+        for (Inimigo inimigo : inimigo) {
+            graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
+
+        }
+        
         g.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         nave.atualizar();
+        ArrayList<Tiro> tiros = nave.getTiros();
+        for (Tiro tiro : tiros) {
+            tiro.atualizar();
+        }
+
+        for (int i = 0; i < this.inimigo.size(); i++) {
+            Inimigo inimigo = this.inimigo.get(i);
+            if(inimigo.getPosicaoEmX() < 0){
+                this.inimigo.remove(inimigo);
+            }
+            else{
+                inimigo.atualizar();
+            }
+            
+        }
+        
         repaint();
     }
 
@@ -53,7 +80,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+        if(e.getKeyCode() == KeyEvent.VK_SPACE)
             nave.atirar();
         else
             nave.mover(e);

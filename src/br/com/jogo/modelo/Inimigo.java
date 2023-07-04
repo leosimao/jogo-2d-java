@@ -7,10 +7,12 @@ public class Inimigo extends Grafico {
     public final static int VELOCIDADE_INIMIGO = 2; 
 
     public Inimigo(int xAleatorio, int yAleatorio){
+        this.carregar();
         super.setPosicaoEmX(super.getPosicaoEmX() + yAleatorio);
         super.setPosicaoEmX(super.getPosicaoEmY() + yAleatorio);
     }
     
+    @Override
     public void carregar(){
         ImageIcon imagem = new ImageIcon("recursos//inimigo.png");
         super.setImagem(imagem.getImage());
