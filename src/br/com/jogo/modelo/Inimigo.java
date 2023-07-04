@@ -12,7 +12,6 @@ public class Inimigo extends Grafico {
         super.setPosicaoEmX(super.getPosicaoEmY() + yAleatorio);
     }
     
-    @Override
     public void carregar(){
         ImageIcon imagem = new ImageIcon("recursos//inimigo.png");
         super.setImagem(imagem.getImage());
