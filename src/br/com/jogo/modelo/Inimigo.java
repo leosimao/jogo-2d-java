@@ -8,10 +8,11 @@ public class Inimigo extends Grafico {
 
     public Inimigo(int xAleatorio, int yAleatorio){
         this.carregar();
-        super.setPosicaoEmX(super.getPosicaoEmX() + yAleatorio);
-        super.setPosicaoEmX(super.getPosicaoEmY() + yAleatorio);
+        super.setPosicaoEmX(xAleatorio);
+        super.setPosicaoEmY(yAleatorio);
     }
     
+    @Override
     public void carregar(){
         ImageIcon imagem = new ImageIcon("recursos//inimigo.png");
         super.setImagem(imagem.getImage());
@@ -22,7 +23,4 @@ public class Inimigo extends Grafico {
     public void atualizar(){
         super.setPosicaoEmX(getPosicaoEmX() - VELOCIDADE_INIMIGO);
     }
-
-    public void add(Inimigo inimigo) {
-    }
-}
+} 

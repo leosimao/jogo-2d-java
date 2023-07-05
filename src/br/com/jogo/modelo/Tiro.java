@@ -1,5 +1,7 @@
 package br.com.jogo.modelo;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class Tiro extends Grafico{
@@ -18,6 +20,11 @@ public class Tiro extends Grafico{
         super.setImagem(imagem.getImage());
         super.setAlturaImagem(super.getImagem().getWidth(null));
         super.setLarguraImagem(super.getImagem().getWidth(null));
+    }
+
+    public void superTiro(){
+        ImageIcon superTiro = new ImageIcon("recursos\\super_tiro.png");
+
     }
 
     

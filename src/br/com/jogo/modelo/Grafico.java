@@ -1,8 +1,7 @@
 package br.com.jogo.modelo;
 
 import java.awt.Image;
-
-import javax.swing.ImageIcon;
+import java.awt.Rectangle;
 
 public abstract class Grafico {
     private int posicaoEmX;
@@ -10,6 +9,7 @@ public abstract class Grafico {
     private int alturaImagem;
     private int larguraImagem;
     private Image imagem;
+    private boolean ehVisivel = true;
 
     public abstract void carregar();
 
@@ -51,5 +51,9 @@ public abstract class Grafico {
 
     public void setImagem(Image imagem) {
         this.imagem = imagem;
+    }
+
+    public Rectangle rectangle(){
+        return new Rectangle(posicaoEmX, posicaoEmY, larguraImagem, alturaImagem);
     }
 }
