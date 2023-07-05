@@ -19,6 +19,7 @@ public class Personagem extends Grafico {
         this.tiros = new ArrayList<Tiro>();
     }
     
+    @Override
     public void carregar(){
         ImageIcon imagem = new ImageIcon("recursos//nave.png");
         super.setImagem(imagem.getImage());
