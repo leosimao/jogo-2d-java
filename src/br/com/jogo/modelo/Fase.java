@@ -41,8 +41,13 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
             graficos.drawImage(fundo, 0, 0, null);
             graficos.drawImage(nave.getImagem(), nave.getPosicaoEmX(), nave.getPosicaoEmY(), this);
             ArrayList<Tiro> tiros = nave.getTiros();
+            ArrayList<Tiro> superTiros = nave.getSuperT();
             for (Tiro tiro : tiros) {
                 graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
+            }
+
+            for (Tiro superT : superTiros) {
+                graficos.drawImage(superT.getImagem(), superT.getPosicaoEmX(), superT.getPosicaoEmY(), this);
             }
 
             for (Inimigo inimigo : inimigos) {
@@ -78,6 +83,11 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
             tiro.atualizar();
         }
 
+        ArrayList<Tiro> superTiros = nave.getSuperT();
+        for (Tiro superT : superTiros) {
+            superT.atualizarSuper();
+        }
+
         for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = this.inimigos.get(i);
             if(inimigo.getPosicaoEmX() < 0){
@@ -101,9 +111,12 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE)
             nave.atirar();
+        if(e.getKeyCode() == KeyEvent.VK_C)
+            nave.atiraSuper();
         else
-            nave.mover(e);
+            nave.mover(e);  
     }
+    
     @Override
     public void keyReleased(KeyEvent e) {
         nave.parar(e);
