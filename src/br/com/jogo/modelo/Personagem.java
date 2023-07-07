@@ -8,7 +8,7 @@ public class Personagem extends Grafico {
     private int deslocamentoX;
     private int deslocamentoY;
     private ArrayList<Tiro> tiros;
-    private ArrayList<Tiro> superT;
+    private ArrayList<SuperTiro> superTiros;
 
     public static final int POSICAO_INICIAL_X = 100;
     public static final int POSICAO_INICIAL_Y = 100;
@@ -73,11 +73,11 @@ public class Personagem extends Grafico {
         this.tiros.add(tiros);
     }
 
-    public void atiraSuper(){
+    public void atirarSuper(){
         int frenteDaNave = super.getPosicaoEmX() + super.getLarguraImagem();
         int meioDaNave = super.getPosicaoEmY() + (super.getAlturaImagem() / 2);
-        Tiro supeTiro = new Tiro(frenteDaNave, meioDaNave);
-        this.superT.add(supeTiro);
+        SuperTiro superTiros = new SuperTiro(frenteDaNave, meioDaNave);
+        this.superTiros.add(superTiros);
     }
 
     public int getDeslocamentoX() {
@@ -104,12 +104,12 @@ public class Personagem extends Grafico {
         this.tiros = tiros;
     }
 
-    public ArrayList<Tiro> getSuperT() {
-        return superT;
+    public ArrayList<SuperTiro> getSuperTiros() {
+        return superTiros;
     }
 
-    public void setSuperT(ArrayList<Tiro> superT) {
-        this.superT = superT;
+    public void setSuperTiros(ArrayList<SuperTiro> superT) {
+        this.superTiros = superT;
     }
 
 }

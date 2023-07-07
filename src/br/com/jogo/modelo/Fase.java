@@ -41,18 +41,18 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
             graficos.drawImage(fundo, 0, 0, null);
             graficos.drawImage(nave.getImagem(), nave.getPosicaoEmX(), nave.getPosicaoEmY(), this);
             ArrayList<Tiro> tiros = nave.getTiros();
-            ArrayList<Tiro> superTiros = nave.getSuperT();
+            ArrayList<SuperTiro> superTiros = nave.getSuperTiros();
+            
             for (Tiro tiro : tiros) {
                 graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
             }
 
-            for (Tiro superT : superTiros) {
-                graficos.drawImage(superT.getImagem(), superT.getPosicaoEmX(), superT.getPosicaoEmY(), this);
+            for(SuperTiro superTiro: superTiros){
+                graficos.drawImage(superTiro.getImagem(), superTiro.getPosicaoEmX(), superTiro.getPosicaoEmY(), this);
             }
 
             for (Inimigo inimigo : inimigos) {
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
-
             }
             
             g.dispose();
@@ -83,11 +83,6 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
             tiro.atualizar();
         }
 
-        ArrayList<Tiro> superTiros = nave.getSuperT();
-        for (Tiro superT : superTiros) {
-            superT.atualizarSuper();
-        }
-
         for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = this.inimigos.get(i);
             if(inimigo.getPosicaoEmX() < 0){
@@ -111,8 +106,6 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE)
             nave.atirar();
-        if(e.getKeyCode() == KeyEvent.VK_C)
-            nave.atiraSuper();
         else
             nave.mover(e);  
     }
