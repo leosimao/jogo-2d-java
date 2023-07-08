@@ -18,6 +18,7 @@ public class Personagem extends Grafico {
         super.setPosicaoEmX(POSICAO_INICIAL_X);
         super.setPosicaoEmY(POSICAO_INICIAL_Y);
         this.tiros = new ArrayList<Tiro>();
+        this.superTiros = new ArrayList<SuperTiro>();
     }
     
     @Override
@@ -76,8 +77,8 @@ public class Personagem extends Grafico {
     public void atirarSuper(){
         int frenteDaNave = super.getPosicaoEmX() + super.getLarguraImagem();
         int meioDaNave = super.getPosicaoEmY() + (super.getAlturaImagem() / 2);
-        SuperTiro superTiros = new SuperTiro(frenteDaNave, meioDaNave);
-        this.superTiros.add(superTiros);
+        SuperTiro tiroSuper = new SuperTiro(frenteDaNave, meioDaNave);
+        this.superTiros.add(tiroSuper);
     }
 
     public int getDeslocamentoX() {

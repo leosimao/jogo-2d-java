@@ -17,7 +17,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
 
     public static final int DELAY = 5;
     public static final int QTD_INIMIGOS = 40;
-    
+
     public Fase(){
         setFocusable(true);
         setDoubleBuffered(true);
@@ -83,6 +83,11 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
             tiro.atualizar();
         }
 
+        ArrayList<SuperTiro> superTiros = nave.getSuperTiros();
+        for(SuperTiro superTiro : superTiros){
+            superTiro.atualizarSuper();
+        }
+
         for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = this.inimigos.get(i);
             if(inimigo.getPosicaoEmX() < 0){
@@ -106,6 +111,8 @@ public class Fase extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE)
             nave.atirar();
+        if(e.getKeyCode() == KeyEvent.VK_C)
+            nave.atirarSuper();
         else
             nave.mover(e);  
     }
