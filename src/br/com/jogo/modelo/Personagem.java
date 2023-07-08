@@ -8,6 +8,7 @@ public class Personagem extends Grafico {
     private int deslocamentoX;
     private int deslocamentoY;
     private ArrayList<Tiro> tiros;
+    private ArrayList<SuperTiro> superTiros;
 
     public static final int POSICAO_INICIAL_X = 100;
     public static final int POSICAO_INICIAL_Y = 100;
@@ -17,8 +18,10 @@ public class Personagem extends Grafico {
         super.setPosicaoEmX(POSICAO_INICIAL_X);
         super.setPosicaoEmY(POSICAO_INICIAL_Y);
         this.tiros = new ArrayList<Tiro>();
+        this.superTiros = new ArrayList<SuperTiro>();
     }
     
+    @Override
     public void carregar(){
         ImageIcon imagem = new ImageIcon("recursos//nave.png");
         super.setImagem(imagem.getImage());
@@ -71,6 +74,13 @@ public class Personagem extends Grafico {
         this.tiros.add(tiros);
     }
 
+    public void atirarSuper(){
+        int frenteDaNave = super.getPosicaoEmX() + super.getLarguraImagem();
+        int meioDaNave = super.getPosicaoEmY() + (super.getAlturaImagem() / 2);
+        SuperTiro tiroSuper = new SuperTiro(frenteDaNave, meioDaNave);
+        this.superTiros.add(tiroSuper);
+    }
+
     public int getDeslocamentoX() {
         return deslocamentoX;
     }
@@ -94,4 +104,13 @@ public class Personagem extends Grafico {
     public void setTiros(ArrayList<Tiro> tiros) {
         this.tiros = tiros;
     }
+
+    public ArrayList<SuperTiro> getSuperTiros() {
+        return superTiros;
+    }
+
+    public void setSuperTiros(ArrayList<SuperTiro> superT) {
+        this.superTiros = superT;
+    }
+
 }
