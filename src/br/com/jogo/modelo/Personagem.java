@@ -9,6 +9,16 @@ public class Personagem extends Grafico {
     private int deslocamentoY;
     private ArrayList<Tiro> tiros;
     private ArrayList<SuperTiro> superTiros;
+    private int pontuacao;
+    private int vidas = 3;
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
+    }
 
     public static final int POSICAO_INICIAL_X = 100;
     public static final int POSICAO_INICIAL_Y = 100;
@@ -141,6 +151,14 @@ public class Personagem extends Grafico {
 
     public void setSuperTiros(ArrayList<SuperTiro> superT) {
         this.superTiros = superT;
+    }
+
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
     }
 
 }

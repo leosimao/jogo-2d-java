@@ -11,7 +11,7 @@ public abstract class Grafico {
     private Image imagem;
     private boolean ehVisivel = true;
 
-    public boolean isEhVisivel() {
+    public boolean getEhVisivel() {
         return ehVisivel;
     }
 

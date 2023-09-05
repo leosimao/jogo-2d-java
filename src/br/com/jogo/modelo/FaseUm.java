@@ -12,6 +12,8 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class FaseUm extends Fase {
+
+    public static final int PONTOS_POR_INIMIGO = 1;
     
     public FaseUm(){
         super();
@@ -34,11 +36,13 @@ public class FaseUm extends Fase {
         Graphics2D graficos = (Graphics2D)  g;
         if(emJogo){
             graficos.drawImage(fundo, 0, 0, null);
-            graficos.drawImage(personagem.getImagem(), personagem.getPosicaoEmX(), personagem.getPosicaoEmY(), this);
-            
+
             for (Asteroide asteroide : asteroides) {
                 graficos.drawImage(asteroide.getImagem(), asteroide.getPosicaoEmX(), asteroide.getPosicaoEmY(), this);
             }
+
+            graficos.drawImage(personagem.getImagem(), personagem.getPosicaoEmX(), personagem.getPosicaoEmY(), this);
+            
             
             ArrayList<Tiro> tiros = personagem.getTiros();
             ArrayList<SuperTiro> superTiros = personagem.getSuperTiros();
@@ -55,6 +59,9 @@ public class FaseUm extends Fase {
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
             }
             
+            super.desenhaPontuacao(graficos);
+            super.desenhaVidas(graficos);
+
             g.dispose();
         }
         else{
@@ -86,18 +93,29 @@ public class FaseUm extends Fase {
         personagem.atualizar();
 
         ArrayList<Tiro> tiros = personagem.getTiros();
-        for (Tiro tiro : tiros) {
-            tiro.atualizar();
+        for (int i = 0; i < tiros.size(); i++) {
+            Tiro tiro = tiros.get(i);
+            if(tiro.getPosicaoEmX() > Principal.LARGURA_DA_TELA || !tiro.getEhVisivel()){
+                tiros.remove(tiro);
+            }
+            else{
+                tiro.atualizar();
+            }            
         }
 
         ArrayList<SuperTiro> superTiros = personagem.getSuperTiros();
-        for(SuperTiro superTiro : superTiros){
-            superTiro.atualizarSuper();
+        for(int i = 0; i < superTiros.size(); i++){
+            SuperTiro tiroSuper = superTiros.get(i);
+            if(tiroSuper.getPosicaoEmX() > Principal.LARGURA_DA_TELA || !tiroSuper.getEhVisivel()){
+                superTiros.remove(tiroSuper);
+            } else {
+                tiroSuper.atualizar();
+            }
         }
 
         for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = this.inimigos.get(i);
-            if(inimigo.getPosicaoEmX() < 0){
+            if(inimigo.getPosicaoEmX() < 0 || !inimigo.getEhVisivel()){
                 this.inimigos.remove(inimigo);
             }
             else{
@@ -137,16 +155,16 @@ public class FaseUm extends Fase {
             Inimigo inimigo = inimigos.get(i);
             Rectangle formaInimigo = inimigo.getRectangle();
             if(formaInimigo.intersects(formaPersonagem)){
-                this.personagem.setEhVisivel(false);
-                inimigo.setEhVisivel(false);
-                emJogo = false;
+                personagem.setVidas(personagem.getVidas() - 1);
             }
 
             ArrayList<Tiro> tiros = this.personagem.getTiros();
             for (int j = 0; j < tiros.size(); j++){
-                Tiro tiro = tiros.get(j);
+                Tiro tiro = tiros.get(j);                
                 Rectangle formaTiro = tiro.getRectangle();
-                if(formaInimigo.intersects(formaTiro)){
+                if(formaInimigo.intersects(formaTiro) || formaInimigo.intersects(formaSuperTiro)){
+                    int pontuacaoAtual = this.personagem.getPontuacao();
+                    this.personagem.setPontuacao(pontuacaoAtual + PONTOS_POR_INIMIGO);
                     inimigo.setEhVisivel(false);
                     tiro.setEhVisivel(false);
                 }

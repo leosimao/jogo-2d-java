@@ -19,8 +19,9 @@ public class SuperTiro extends Grafico{
         super.setAlturaImagem(getImagem().getWidth(null));
         super.setLarguraImagem(getImagem().getHeight(null));
     }
-
-    public void atualizarSuper(){
-        super.setPosicaoEmX(super.getPosicaoEmX() + VELOCIDADE_SUPER);
+    
+    @Override
+    public void atualizar() {
+         super.setPosicaoEmX(super.getPosicaoEmX() + VELOCIDADE_SUPER);
     }   
 }

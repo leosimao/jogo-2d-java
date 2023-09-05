@@ -3,6 +3,7 @@ package br.com.jogo.modelo;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,7 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
 
     public static final int DELAY = 5;
     public static final int QUANTIDADE_INIMIGOS = 40;
-    public static final int QUANTIDADE_ASTEROIDES = 40;
+    public static final int QUANTIDADE_ASTEROIDES = 20;
 
     public Fase(){
         setFocusable(true);
@@ -32,6 +33,20 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     public abstract void inicializarInimigo();
     public abstract void verificarColisoes();
     public abstract void inicializarElementosGraficosAdicionais();
+
+    public void desenhaPontuacao(Graphics2D graficos){
+        String textoPontuacao = "Pontos " + personagem.getPontuacao();
+        graficos.setFont(new java.awt.Font("Segoe UI",java.awt.Font.PLAIN, 22));
+        graficos.setColor(new java.awt.Color(255, 255, 255));
+        graficos.drawString(textoPontuacao, 20, 25);
+    }
+
+    public void desenhaVidas(Graphics2D graficos){
+        String textoVida = "Vidas Restantes " + personagem.getVidas();
+        graficos.setFont(new java.awt.Font("Segoe UI",java.awt.Font.PLAIN, 22));
+        graficos.setColor(new java.awt.Color(255, 255, 255));
+        graficos.drawString(textoVida, 20, 50);
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
