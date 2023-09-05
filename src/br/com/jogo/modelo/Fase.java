@@ -11,13 +11,17 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public abstract class Fase extends JPanel implements ActionListener, KeyListener{
-    public static final int DELAY = 5;
-    public static final int QUANTIDADE_INIMIGOS = 40;
     
     protected Image fundo;
     protected Personagem personagem;
     protected ArrayList<Inimigo> inimigos;
     protected Timer timer;
+    protected boolean emJogo = true;
+    protected ArrayList<Asteroide> asteroides;
+
+    public static final int DELAY = 5;
+    public static final int QUANTIDADE_INIMIGOS = 40;
+    public static final int QUANTIDADE_ASTEROIDES = 40;
 
     public Fase(){
         setFocusable(true);
@@ -26,6 +30,8 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     }
 
     public abstract void inicializarInimigo();
+    public abstract void verificarColisoes();
+    public abstract void inicializarElementosGraficosAdicionais();
 
     @Override
     public void keyTyped(KeyEvent e) {

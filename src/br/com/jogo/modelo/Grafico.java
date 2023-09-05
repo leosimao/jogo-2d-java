@@ -11,7 +11,16 @@ public abstract class Grafico {
     private Image imagem;
     private boolean ehVisivel = true;
 
+    public boolean isEhVisivel() {
+        return ehVisivel;
+    }
+
+    public void setEhVisivel(boolean ehVisivel) {
+        this.ehVisivel = ehVisivel;
+    }
+
     public abstract void carregar();
+    public abstract void atualizar();
 
     public int getPosicaoEmX() {
         return posicaoEmX;
@@ -53,7 +62,7 @@ public abstract class Grafico {
         this.imagem = imagem;
     }
 
-    public Rectangle rectangle(){
+    public Rectangle getRectangle(){
         return new Rectangle(posicaoEmX, posicaoEmY, larguraImagem, alturaImagem);
     }
 }
