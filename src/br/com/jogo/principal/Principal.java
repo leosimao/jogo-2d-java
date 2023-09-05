@@ -1,6 +1,6 @@
 package br.com.jogo.principal;
 
-import br.com.jogo.modelo.Fase;
+import br.com.jogo.modelo.FaseUm;
 import br.com.jogo.modelo.Personagem;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ public class Principal extends JFrame {
     }
     
     public Principal() {
-        Fase fase = new Fase();
+        FaseUm fase = new FaseUm();
         super.add(fase);
         super.setTitle("Jogo Java 2D - POO");
         super.setSize(1920, 1080);

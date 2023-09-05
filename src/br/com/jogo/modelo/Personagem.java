@@ -37,16 +37,28 @@ public class Personagem extends Grafico {
     public void mover(KeyEvent tecla){
         int codigo = tecla.getKeyCode();
         switch(codigo){
-            case KeyEvent.VK_UP, KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 this.deslocamentoY = -DESLOCAMENTO;
                 break;
-            case KeyEvent.VK_DOWN, KeyEvent.VK_S:
+            case KeyEvent.VK_W:
+                this.deslocamentoY = -DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_DOWN:
                 this.deslocamentoY = DESLOCAMENTO;
                 break;
-            case KeyEvent.VK_LEFT, KeyEvent.VK_A:
+            case KeyEvent.VK_S:
+                this.deslocamentoY = DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_LEFT:
                 this.deslocamentoX = -DESLOCAMENTO;
                 break;
-            case KeyEvent.VK_RIGHT, KeyEvent.VK_D:
+            case KeyEvent.VK_A:
+                this.deslocamentoX = -DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_RIGHT:
+                this.deslocamentoX = DESLOCAMENTO;
+                break;
+            case KeyEvent.VK_D:
                 this.deslocamentoX = DESLOCAMENTO;
                 break;
             default:
@@ -57,10 +69,28 @@ public class Personagem extends Grafico {
     public void parar(KeyEvent tecla){
         int codigo = tecla.getKeyCode();
         switch (codigo){
-            case KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_W, KeyEvent.VK_S:
+            case KeyEvent.VK_UP:
                 this.deslocamentoY = 0;
                 break;
-            case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_A, KeyEvent.VK_D:
+            case KeyEvent.VK_DOWN:
+                this.deslocamentoY = 0;
+                break;
+            case KeyEvent.VK_W:
+                this.deslocamentoY = 0;
+                break;
+            case KeyEvent.VK_S:
+                this.deslocamentoY = 0;
+                break;
+            case KeyEvent.VK_LEFT:
+                this.deslocamentoX = 0;
+                break;
+            case KeyEvent.VK_RIGHT:
+                this.deslocamentoX = 0;
+                break;
+            case KeyEvent.VK_A:
+                this.deslocamentoX = 0;
+                break;
+            case KeyEvent.VK_D:
                 this.deslocamentoX = 0;
                 break;
             default:
