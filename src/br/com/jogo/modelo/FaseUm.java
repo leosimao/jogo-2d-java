@@ -104,7 +104,7 @@ public class FaseUm extends Fase {
         }
 
         ArrayList<SuperTiro> superTiros = personagem.getSuperTiros();
-        for(int i = 0; i < superTiros.size(); i++){
+        for (int i = 0; i < superTiros.size(); i++) {
             SuperTiro tiroSuper = superTiros.get(i);
             if(tiroSuper.getPosicaoEmX() > Principal.LARGURA_DA_TELA || !tiroSuper.getEhVisivel()){
                 superTiros.remove(tiroSuper);
@@ -162,11 +162,23 @@ public class FaseUm extends Fase {
             for (int j = 0; j < tiros.size(); j++){
                 Tiro tiro = tiros.get(j);                
                 Rectangle formaTiro = tiro.getRectangle();
-                if(formaInimigo.intersects(formaTiro) || formaInimigo.intersects(formaSuperTiro)){
+                if(formaInimigo.intersects(formaTiro)){
                     int pontuacaoAtual = this.personagem.getPontuacao();
                     this.personagem.setPontuacao(pontuacaoAtual + PONTOS_POR_INIMIGO);
                     inimigo.setEhVisivel(false);
                     tiro.setEhVisivel(false);
+                }
+            }
+
+            ArrayList<SuperTiro> tiroSuper = this.personagem.getSuperTiros();
+            for(int x = 0; x < tiroSuper.size(); x++){
+                SuperTiro superTiro = tiroSuper.get(x);
+                Rectangle formaSupertiro = superTiro.getRectangle();
+                if(formaInimigo.intersects(formaSupertiro)){
+                    int pontuacaoAtual = this.personagem.getPontuacao();
+                    this.personagem.setPontuacao(pontuacaoAtual + PONTOS_POR_INIMIGO);
+                    inimigo.setEhVisivel(false);
+                    superTiro.setEhVisivel(false);
                 }
             }
         }
